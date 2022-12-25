@@ -1,7 +1,8 @@
-from scipy.sparse.dia import dia_matrix
-import numpy as np
 import re
 from typing import List
+
+import numpy as np
+from scipy.sparse.dia import dia_matrix
 
 
 def partial_fit(self, X: List[str]):

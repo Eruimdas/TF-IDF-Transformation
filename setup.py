@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -23,7 +23,7 @@ setup(
         "scikit-learn==0.20.0",
         "pickleshare==0.7.5",
         "numpy==1.21.6",
-        "setuptools==65.5.0"
+        "setuptools==65.5.0",
     ],
-    tests_require = ["pytest==7.2.0"]
+    tests_require=["pytest==7.2.0"],
 )

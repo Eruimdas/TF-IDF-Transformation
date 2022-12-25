@@ -1,8 +1,10 @@
-from sklearn.feature_extraction.text import TfidfVectorizer
-from .utils.utils import partial_fit
 import pickle
 import re
-from typing import Union, List
+from typing import List, Union
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+from .utils.utils import partial_fit
 
 
 class CustomTfidfVectorizer:
@@ -71,7 +73,7 @@ class CustomTfidfVectorizer:
         elif input_data is None and self.input_data is not None:
             input_data = self.input_data
         return input_data
-    
+
     def fit(self, input_data: Union[List[str], str, None] = None):
         """Fit the TfidfVectorizer on the input data.
 

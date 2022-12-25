@@ -1,5 +1,7 @@
-from tfidf import CustomTfidfVectorizer
 import numpy as np
+
+from tfidf import CustomTfidfVectorizer
+
 
 def test_load():
     vec = CustomTfidfVectorizer(path="test.pkl")

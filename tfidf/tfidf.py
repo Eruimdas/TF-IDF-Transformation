@@ -65,6 +65,13 @@ class CustomTfidfVectorizer:
         else:
             raise ValueError("Either input_data or path must be provided")
 
+    def check_input_data(self, input_data):
+        if input_data is None and self.input_data is None:
+            raise ValueError("input_data must be provided")
+        elif input_data is None and self.input_data is not None:
+            input_data = self.input_data
+        return input_data
+    
     def fit(self, input_data: Union[List[str], str, None] = None):
         """Fit the TfidfVectorizer on the input data.
 
@@ -84,10 +91,7 @@ class CustomTfidfVectorizer:
             If input_data is not provided and the input_data attribute of the CustomTfidfVectorizer object is not set.
         """
 
-        if input_data is None and self.input_data is None:
-            raise ValueError("input_data must be provided")
-        elif input_data is None and self.input_data is not None:
-            input_data = self.input_data
+        input_data = self.check_input_data(input_data)
         self.tfidf_vectorizer = self.tfidf_vectorizer.fit(input_data)
         self.tfidf_vectorizer.n_docs = len(input_data)
 
@@ -146,10 +150,7 @@ class CustomTfidfVectorizer:
             If input_data is not provided and the input_data attribute of the CustomTfidfVectorizer object is not set.
         """
 
-        if input_data is None and self.input_data is None:
-            raise ValueError("input_data must be provided")
-        elif input_data is None and self.input_data is not None:
-            input_data = self.input_data
+        input_data = self.check_input_data(input_data)
         self.check_new_corpus(input_data)
         transformed_data = self.tfidf_vectorizer.transform(input_data)
         return transformed_data
@@ -178,8 +179,7 @@ class CustomTfidfVectorizer:
             If input_data is not provided and the input_data attribute of the CustomTfidfVectorizer object is not set.
         """
 
-        if input_data is None:
-            input_data = self.input_data
+        input_data = self.check_input_data(input_data)
         transformed_data = self.tfidf_vectorizer.fit_transform(input_data)
         return transformed_data
 
